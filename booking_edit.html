@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Registration_Page</title>
+		<link rel="stylesheet" href="css/bootstrap2.min.css">
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="col-sm-12">
+			<h3 align="center">Registration-List</h3>
+			<table class="table table-striped">
+				<thead>					
+					<th>Booking_id</th>
+					<th>Product_id</th>				
+					<th>Customer_id</th>				
+					<th>Date</th>
+				</thead>
+				<tbody>
+				<?php
+					include"conn.php";
+					$query1 = "select * from booking_tbl";
+					$res = mysqli_query($conn, $query1);
+					$data = mysqli_num_rows($res);
+					if($data)
+					{
+						while($row = mysqli_fetch_array($res))
+						{
+						?>
+							<tr>
+								
+								<td><?php echo $row['book_id']?></td>
+								<td><?php echo $row['p_id']?></td>
+								<td><?php echo $row['c_id']?></td>
+								<td><?php echo $row['reg_date_time']?></td>
+								
+								
+							
+					<?php	
+					}
+					?>
+				</tbody>
+			</table>
+		</div>
+	</div>	
+</body>
+</html>
